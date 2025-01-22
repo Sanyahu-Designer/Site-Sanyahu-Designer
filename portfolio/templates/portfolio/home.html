@@ -1,0 +1,250 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="py-32 bg-deep-navy">
+    <div class="container mx-auto px-4">
+        <div class="text-center">
+            <h1 class="text-4xl text-white mb-4">Designer e Desenvolvedor Web</h1>
+            <p class="text-xl text-gray-300 mb-8">Criando experiências digitais únicas</p>
+            <div class="space-x-4">
+                <a href="#projects" class="bg-gold-primary text-white px-6 py-2 rounded-lg">Ver Projetos</a>
+                <a href="#contact" class="border border-gold-primary text-gold-primary px-6 py-2 rounded-lg">Contato</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="py-24 bg-white dark:bg-deep-navy relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute inset-y-0 right-0 w-1/2 bg-gradient-to-l from-gold-primary/5 to-transparent"></div>
+    </div>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="section-title">Nossos Serviços</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="service-card group">
+                <div class="text-gold-primary text-4xl mb-6 transform group-hover:scale-110 transition-transform">
+                    <i class="fas fa-paint-brush"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-4">Design UI/UX</h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+                    Interfaces intuitivas e experiências de usuário que encantam e convertem. Design pensado em resultados.
+                </p>
+                <ul class="space-y-4 text-gray-600 dark:text-gray-300">
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-gold-primary mr-3"></i>
+                        <span>Wireframes & Protótipos</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-gold-primary mr-3"></i>
+                        <span>Design Responsivo</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-gold-primary mr-3"></i>
+                        <span>Testes de Usabilidade</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="service-card group hover:scale-105 transition-transform duration-300 animate-fade-up [animation-delay:200ms]">
+                <div class="text-gold-primary text-4xl mb-6 transform group-hover:scale-110 transition-transform">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-4">Desenvolvimento Web</h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+                    Websites e aplicações web modernas, rápidas e otimizadas para buscadores. Código limpo e performático.
+                </p>
+                <ul class="space-y-4 text-gray-600 dark:text-gray-300">
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-gold-primary mr-3"></i>
+                        <span>Sites Institucionais</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-gold-primary mr-3"></i>
+                        <span>E-commerces</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-gold-primary mr-3"></i>
+                        <span>Sistemas Web</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="service-card group hover:scale-105 transition-transform duration-300 animate-fade-up [animation-delay:400ms]">
+                <div class="text-gold-primary text-4xl mb-6 transform group-hover:scale-110 transition-transform">
+                    <i class="fas fa-bullhorn"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-4">Marketing Digital</h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+                    Estratégias completas para aumentar sua presença online e converter visitantes em clientes.
+                </p>
+                <ul class="space-y-4 text-gray-600 dark:text-gray-300">
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-gold-primary mr-3"></i>
+                        <span>SEO Otimizado</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-gold-primary mr-3"></i>
+                        <span>Marketing de Conteúdo</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-gold-primary mr-3"></i>
+                        <span>Análise de Dados</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects" class="py-24 bg-pearl-white dark:bg-slate-blue relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="section-title">Projetos em Destaque</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {% for project in projects %}
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="{{ project.image.url }}" 
+                         alt="{{ project.title }}" 
+                         loading="lazy">
+                    <div class="project-overlay">
+                        <a href="{{ project.url }}" 
+                           class="btn-primary transform -translate-y-4 group-hover:translate-y-0 transition-transform"
+                           target="_blank" 
+                           rel="noopener">
+                            <i class="fas fa-external-link-alt mr-2"></i>
+                            Ver Projeto
+                        </a>
+                    </div>
+                </div>
+                <h3 class="text-2xl font-bold mb-4">{{ project.title }}</h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                    {{ project.description }}
+                </p>
+                <div class="flex flex-wrap gap-2">
+                    {% for tech in project.technologies.all %}
+                    <span class="tech-tag">{{ tech.name }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section id="testimonials" class="py-24 bg-white dark:bg-deep-navy">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="section-title">O que Nossos Clientes Dizem</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {% for testimonial in testimonials %}
+            <div class="card animate-fade-up">
+                <div class="relative">
+                    <div class="absolute -top-4 -left-4 text-4xl text-gold-primary opacity-25">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 mb-6 relative z-10">
+                        "{{ testimonial.content }}"
+                    </p>
+                    <div class="flex items-center">
+                        <img src="{{ testimonial.author_image.url }}" 
+                             alt="{{ testimonial.author_name }}" 
+                             class="w-12 h-12 rounded-full object-cover mr-4"
+                             loading="lazy">
+                        <div>
+                            <h4 class="font-bold">{{ testimonial.author_name }}</h4>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm">
+                                {{ testimonial.author_position }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-24 bg-white dark:bg-deep-navy relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="section-title">Vamos Trabalhar Juntos</h2>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            <div class="lg:col-span-1 space-y-8">
+                <div class="card">
+                    <div class="text-gold-primary text-3xl mb-4">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Email</h3>
+                    <a href="mailto:contato@sanyahu.com" 
+                       class="text-gray-600 dark:text-gray-300 hover:text-gold-primary dark:hover:text-gold-light transition-colors">
+                        contato@sanyahu.com
+                    </a>
+                </div>
+                
+                <div class="card">
+                    <div class="text-gold-primary text-3xl mb-4">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Telefone</h3>
+                    <a href="tel:+5511999999999" 
+                       class="text-gray-600 dark:text-gray-300 hover:text-gold-primary dark:hover:text-gold-light transition-colors">
+                        +55 (11) 99999-9999
+                    </a>
+                </div>
+                
+                <div class="card">
+                    <div class="text-gold-primary text-3xl mb-4">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Localização</h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        São Paulo, SP
+                    </p>
+                </div>
+            </div>
+            
+            <form class="lg:col-span-2 card" method="post">
+                {% csrf_token %}
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="form-group">
+                        <label for="name" class="form-label">Nome</label>
+                        <input type="text" 
+                               id="name" 
+                               name="name" 
+                               required
+                               class="form-input">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" 
+                               id="email" 
+                               name="email" 
+                               required
+                               class="form-input">
+                    </div>
+                </div>
+                
+                <div class="form-group mt-8">
+                    <label for="message" class="form-label">Mensagem</label>
+                    <textarea id="message" 
+                              name="message" 
+                              rows="6" 
+                              required
+                              class="form-input"></textarea>
+                </div>
+                
+                <button type="submit" class="btn-primary w-full mt-8">
+                    <span>Enviar Mensagem</span>
+                    <i class="fas fa-paper-plane ml-2"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

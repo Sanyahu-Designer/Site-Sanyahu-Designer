@@ -1,0 +1,225 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Contato - Sanyahu Designer{% endblock %}
+
+{% block meta_description %}Entre em contato para discutirmos seu projeto. Estou sempre em busca de novos desafios e oportunidades de criar soluções digitais únicas.{% endblock %}
+
+{% block content %}
+    <!-- Contact Header -->
+    <div class="bg-gradient-to-br from-gray-900 to-blue-900 py-20">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-4xl lg:text-5xl font-bold text-white mb-4">Vamos Conversar</h1>
+                <p class="text-xl text-gray-300">Estou sempre em busca de novos projetos e desafios interessantes. Se você tem uma ideia em mente, adoraria conversar sobre como posso ajudar.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Content -->
+    <section class="py-16 bg-background-alt">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                    <!-- Contact Form -->
+                    <div class="bg-white rounded-2xl p-8 shadow-lg">
+                        <h2 class="text-3xl font-bold mb-8">Envie uma Mensagem</h2>
+                        <form method="post" id="contactForm" class="space-y-6">
+                            {% csrf_token %}
+                            {{ form.timestamp }}
+                            {{ form.website }}
+                            
+                            {% if form.non_field_errors %}
+                            <div class="bg-red-50 border border-red-200 text-red-600 rounded-lg p-4 mb-6">
+                                {{ form.non_field_errors }}
+                            </div>
+                            {% endif %}
+                            
+                            {% if messages %}
+                            {% for message in messages %}
+                            <div class="{% if message.tags == 'success' %}bg-green-50 border border-green-200 text-green-600{% else %}bg-red-50 border border-red-200 text-red-600{% endif %} rounded-lg p-4 mb-6">
+                                {{ message }}
+                            </div>
+                            {% endfor %}
+                            {% endif %}
+                            
+                            <div class="form-group">
+                                <label for="{{ form.name.id_for_label }}" class="form-label">Nome</label>
+                                {{ form.name }}
+                                {% if form.name.errors %}
+                                <div class="text-red-500 text-sm mt-1">{{ form.name.errors }}</div>
+                                {% endif %}
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="{{ form.email.id_for_label }}" class="form-label">Email</label>
+                                {{ form.email }}
+                                {% if form.email.errors %}
+                                <div class="text-red-500 text-sm mt-1">{{ form.email.errors }}</div>
+                                {% endif %}
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="{{ form.subject.id_for_label }}" class="form-label">Assunto</label>
+                                {{ form.subject }}
+                                {% if form.subject.errors %}
+                                <div class="text-red-500 text-sm mt-1">{{ form.subject.errors }}</div>
+                                {% endif %}
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="{{ form.message.id_for_label }}" class="form-label">Mensagem</label>
+                                {{ form.message }}
+                                {% if form.message.errors %}
+                                <div class="text-red-500 text-sm mt-1">{{ form.message.errors }}</div>
+                                {% endif %}
+                            </div>
+                            
+                            <button type="submit" class="btn-primary w-full text-white flex items-center justify-center space-x-2" id="submitBtn">
+                                <span>Enviar Mensagem</span>
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <!-- Contact Info -->
+                    <div class="space-y-12">
+                        <!-- Info Cards -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                            <!-- Email -->
+                            <div class="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-lg text-center w-full max-w-[300px] mx-auto">
+                                <div class="text-primary text-4xl mb-6">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-4">Email</h3>
+                                <a href="mailto:arte@sanyahudesigner.com.br" class="text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors">
+                                    Contato Comercial
+                                </a>
+                            </div>
+                            
+                            <!-- Phone -->
+                            <div class="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-lg text-center w-full max-w-[300px] mx-auto">
+                                <div class="text-primary text-4xl mb-6">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-4">WhatsApp</h3>
+                                <a href="https://wa.me/5551996164731" target="_blank" class="text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors">
+                                    (51) 99616-4731
+                                </a>
+                            </div>
+                            
+                            <!-- Location -->
+                            <div class="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-lg text-center w-full max-w-[300px] mx-auto">
+                                <div class="text-primary text-4xl mb-6">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-4">Localização</h3>
+                                <a href="https://maps.app.goo.gl/Ltc2m1n51JKH7BvMA" target="_blank" class="text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors">
+                                    Caraá, RS
+                                </a>
+                            </div>
+                            
+                            <!-- Social -->
+                            <div class="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-lg text-center w-full max-w-[300px] mx-auto">
+                                <div class="text-primary text-4xl mb-6">
+                                    <i class="fas fa-share-alt"></i>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-4">Redes Sociais</h3>
+                                <div class="flex justify-center gap-8">
+                                    <a href="https://www.instagram.com/sanyahu_designer" target="_blank" class="text-gray-700 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors text-2xl" aria-label="Instagram">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                    <a href="https://www.linkedin.com/in/sanyahu-designer/" target="_blank" class="text-gray-700 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors text-2xl" aria-label="LinkedIn">
+                                        <i class="fab fa-linkedin"></i>
+                                    </a>
+                                    <a href="https://github.com/Sanyahu-Designer" target="_blank" class="text-gray-700 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors text-2xl" aria-label="GitHub">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- FAQ -->
+                        <div class="bg-white rounded-2xl p-8 shadow-lg">
+                            <h3 class="text-2xl font-bold mb-6">Perguntas Frequentes</h3>
+                            <div class="space-y-6">
+                                {% for faq in faqs %}
+                                <div>
+                                    <h4 class="text-lg font-bold mb-2">{{ faq.question }}</h4>
+                                    <div class="text-text-light">{{ faq.answer|safe }}</div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('form');
+    const submitBtn = document.getElementById('submitBtn');
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Desabilita o botão durante o envio
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = 'Enviando... <i class="fas fa-spinner fa-spin ml-2"></i>';
+        
+        // Remove mensagens antigas
+        const currentMessages = document.querySelectorAll('.bg-green-50, .bg-red-50');
+        currentMessages.forEach(msg => msg.remove());
+        
+        // Pega os dados do formulário
+        const formData = new FormData(form);
+        
+        // Faz a requisição AJAX
+        fetch(window.location.href, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Cria a mensagem
+            const messageDiv = document.createElement('div');
+            messageDiv.className = data.status === 'success' 
+                ? 'bg-green-50 border border-green-200 text-green-600 rounded-lg p-4 mb-6'
+                : 'bg-red-50 border border-red-200 text-red-600 rounded-lg p-4 mb-6';
+            messageDiv.textContent = data.message;
+            
+            // Adiciona a mensagem no início do formulário
+            form.insertBefore(messageDiv, form.firstChild);
+            
+            // Se for sucesso, limpa o formulário
+            if (data.status === 'success') {
+                form.reset();
+            }
+            
+            // Rola para o topo da mensagem
+            messageDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        })
+        .catch(error => {
+            console.error('Erro:', error);
+            // Adiciona mensagem de erro
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'bg-red-50 border border-red-200 text-red-600 rounded-lg p-4 mb-6';
+            errorDiv.textContent = 'Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente.';
+            form.insertBefore(errorDiv, form.firstChild);
+        })
+        .finally(() => {
+            // Reabilita o botão
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = 'Enviar Mensagem <i class="fas fa-paper-plane ml-2"></i>';
+        });
+    });
+});
+</script>
+{% endblock %}

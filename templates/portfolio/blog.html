@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans "Blog" %} - {{ block.super }}{% endblock %}
+
+{% block content %}
+<!-- Blog Header -->
+<div class="bg-gradient-to-br from-gray-900 to-blue-900 py-20">
+    <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-4xl lg:text-5xl font-bold text-white mb-4">{% trans "Blog" %}</h1>
+            <p class="text-xl text-gray-300">{% trans "Compartilhando conhecimento e experiências sobre design, desenvolvimento web e tecnologia." %}</p>
+        </div>
+    </div>
+</div>
+
+<!-- Blog Posts -->
+<section class="py-12 bg-white dark:bg-deep-navy">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {% if posts %}
+                {% for post in posts %}
+                <article class="bg-pearl-white dark:bg-slate-blue rounded-xl overflow-hidden shadow-lg transition-transform duration-300 hover:scale-105">
+                    {% if post.image %}
+                    <img src="{{ post.image.url }}" alt="{{ post.title }}" class="w-full h-48 object-cover">
+                    {% endif %}
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-4">
+                            <time datetime="{{ post.created_at|date:'Y-m-d' }}">
+                                {{ post.created_at|date:"d/m/Y" }}
+                            </time>
+                            {% if post.category %}
+                            <span class="mx-2">•</span>
+                            <span>{{ post.category }}</span>
+                            {% endif %}
+                        </div>
+                        <h2 class="text-2xl font-bold mb-4">{{ post.title }}</h2>
+                        <p class="text-gray-600 dark:text-gray-300 mb-6">{{ post.description|truncatewords:30 }}</p>
+                        <a href="{% url 'portfolio:post_detail' post.slug %}" class="inline-flex items-center text-primary hover:text-primary-dark">
+                            {% trans "Ler mais" %}
+                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+                {% endfor %}
+            {% else %}
+                <div class="col-span-full text-center">
+                    <div class="p-8 bg-pearl-white dark:bg-slate-blue rounded-xl">
+                        <h2 class="text-3xl font-bold mb-4">{% trans "Em Breve" %}</h2>
+                        <p class="text-gray-600 dark:text-gray-300">
+                            {% trans "Estamos preparando conteúdo incrível para compartilhar com você." %}
+                            {% trans "Em breve, este espaço estará repleto de artigos sobre design, desenvolvimento web, tecnologia e muito mais." %}
+                        </p>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,244 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Sanyahu Designer - Design e Desenvolvimento Web{% endblock %}
+
+{% block content %}
+<section class="bg-gradient-to-br from-gray-900 to-blue-900 min-h-screen flex items-center">
+    <div class="container mx-auto px-6 md:px-16 lg:px-24 py-12 md:py-16">
+        <!-- Mobile -->
+        <div class="md:hidden flex flex-col justify-between min-h-[80vh] px-4">
+            <div class="w-full pt-8">
+                <div class="space-y-2 mb-8">
+                    <h1 id="text1-mobile" class="text-5xl sm:text-6xl font-bold text-white leading-tight">Criamos.</h1>
+                    <h1 id="text2-mobile" class="text-5xl sm:text-6xl font-bold text-white leading-tight">Ampliamos.</h1>
+                </div>
+                
+                <p class="text-lg text-gray-300 mb-12">
+                    Transforme sua presença digital com soluções exclusivas e inovadoras.
+                </p>
+                
+                <div class="space-y-3">
+                    <a href="#projetos" 
+                       class="block w-full bg-white text-blue-900 px-6 py-3.5 rounded-lg text-lg font-medium hover:bg-opacity-90 transition-all flex items-center justify-center gap-2">
+                        Ver Projetos
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                        </svg>
+                    </a>
+                    <a href="#contato" 
+                       class="block w-full border border-white/20 text-white px-6 py-3.5 rounded-lg text-lg font-medium hover:bg-white/10 transition-all flex items-center justify-center gap-2">
+                        Contate-me
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="relative w-full aspect-square max-w-[240px] mx-auto mt-8 opacity-60">
+                <img src="{% static 'img/hero-image.svg' %}" 
+                     alt="Design and Development Illustration"
+                     class="w-full h-full object-contain">
+            </div>
+        </div>
+
+        <!-- Desktop -->
+        <div class="hidden md:flex items-center justify-between max-w-7xl mx-auto">
+            <div class="w-1/2 pl-4 lg:pl-12">
+                <div class="space-y-4 mb-12">
+                    <h1 id="text1" class="text-[5rem] font-bold text-white leading-tight">Criamos.</h1>
+                    <h1 id="text2" class="text-[5rem] font-bold text-white leading-tight">Ampliamos.</h1>
+                </div>
+
+                <p class="text-2xl text-gray-300 mb-12 max-w-xl">
+                    Transforme sua presença digital com soluções exclusivas e inovadoras.
+                </p>
+
+                <div class="flex items-center gap-6">
+                    <a href="#projetos" 
+                       class="bg-white text-blue-900 px-8 py-4 rounded-lg inline-flex items-center gap-2 hover:bg-opacity-90 transition-all group">
+                        <span>Ver Projetos</span>
+                        <svg class="w-6 h-6 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                        </svg>
+                    </a>
+                    <a href="#contato" 
+                       class="text-white border border-white/20 px-8 py-4 rounded-lg inline-flex items-center gap-2 hover:bg-white/10 transition-all">
+                        <span>Contate-me</span>
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="w-1/2 flex justify-end">
+                <img src="{% static 'img/hero-image.svg' %}" 
+                     alt="Design and Development Illustration"
+                     class="w-[90%] h-auto">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Serviços Section -->
+<section id="servicos" class="py-20">
+    <div class="container mx-auto px-4 md:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Nossos Serviços</h2>
+            <p class="text-gray-600 dark:text-gray-400 text-base md:text-lg">Soluções personalizadas para transformar sua presença digital</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {% for service in services %}
+            <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg">
+                <div class="text-primary mb-4 text-4xl">
+                    {{ service.icon_svg|safe }}
+                </div>
+                <h3 class="text-xl md:text-2xl font-bold mb-4">{{ service.title }}</h3>
+                <div class="text-gray-600 dark:text-gray-400">{{ service.description|safe }}</div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Projetos Section -->
+<section id="projetos" class="py-20 bg-gray-100 dark:bg-gray-900">
+    <div class="container mx-auto px-4 md:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Projetos em Destaque</h2>
+            <p class="text-gray-600 dark:text-gray-400 text-base md:text-lg">Confira alguns dos meus trabalhos recentes</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {% for project in featured_projects %}
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+                    <a href="{{ project.get_absolute_url }}" class="block">
+                        {% if project.image %}
+                        <img src="{{ project.image.url }}" alt="{{ project.title }}" class="w-full h-64 object-cover">
+                        {% endif %}
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">{{ project.title }}</h3>
+                            <div class="text-gray-600 dark:text-gray-400">{{ project.description|safe }}</div>
+                            {% if project.technologies %}
+                            <div class="mt-4 flex flex-wrap gap-2">
+                                {% for tech in project.technologies.split %}
+                                <span class="px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded-full text-sm">{{ tech }}</span>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                        </div>
+                    </a>
+                </div>
+            {% empty %}
+                <p class="text-center col-span-full text-gray-600 dark:text-gray-400">Nenhum projeto em destaque disponível</p>
+            {% endfor %}
+        </div>
+
+        <div class="text-center mt-12">
+            <a href="{% url 'portfolio:projects' %}" class="inline-flex items-center text-primary hover:text-primary-dark transition-colors duration-200 text-lg">
+                Ver Todos os Projetos
+                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Depoimentos Section -->
+<section id="depoimentos" class="py-20 bg-white dark:bg-gray-800">
+    <div class="container mx-auto px-4 md:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Depoimentos</h2>
+            <p class="text-gray-600 dark:text-gray-400 text-base md:text-lg">O que nossos clientes dizem sobre nosso trabalho</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {% for testimonial in testimonials %}
+                <div class="bg-gray-100 dark:bg-gray-900 rounded-lg shadow-lg p-8">
+                    <div class="flex flex-col items-center">
+                        {% if testimonial.image %}
+                            <img src="{{ testimonial.image.url }}" alt="{{ testimonial.name }}" 
+                                 class="w-20 h-20 rounded-full object-cover mb-4">
+                        {% endif %}
+                        <blockquote class="text-gray-600 dark:text-gray-400 text-center mb-6">
+                            <div class="px-8 py-2">
+                                {{ testimonial.testimonial|safe }}
+                            </div>
+                        </blockquote>
+                        <div class="text-center">
+                            <h4 class="font-bold text-lg mb-1">{{ testimonial.name }}</h4>
+                            <p class="text-gray-500 dark:text-gray-400">{{ testimonial.position }}</p>
+                            <p class="text-gray-500 dark:text-gray-400">{{ testimonial.company }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <p class="text-center col-span-full text-gray-600 dark:text-gray-400">Nenhum depoimento disponível</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Contato Section -->
+<section id="contato" class="py-20 bg-gray-100 dark:bg-gray-900">
+    <div class="container mx-auto px-4 md:px-8">
+        <div class="max-w-3xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Vamos Trabalhar Juntos?</h2>
+            <p class="text-gray-600 dark:text-gray-400 text-lg mb-8">Tem um projeto em mente? Entre em contato para discutirmos como posso ajudar a tornar sua visão realidade.</p>
+            <a href="{% url 'portfolio:contact' %}" class="inline-flex items-center bg-primary text-white px-8 py-4 rounded-lg hover:bg-primary-dark transition-colors duration-200">
+                Entrar em Contato
+                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+<footer class="bg-gray-900 text-white py-6 md:py-12">
+    <div class="container mx-auto px-4 md:px-8">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="flex justify-center items-center space-x-6 mt-4 md:mt-0">
+                <!-- Social media links -->
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    function typeWriter(element, text, callback) {
+        if (!element) return;
+        let i = 0;
+        element.textContent = '';
+        
+        function type() {
+            if (i < text.length) {
+                element.textContent += text.charAt(i);
+                i++;
+                setTimeout(type, 100);
+            } else if (callback) {
+                setTimeout(callback, 500);
+            }
+        }
+        
+        type();
+    }
+
+    // Inicia a sequência de animação
+    setTimeout(() => {
+        const isMobile = window.innerWidth < 768;
+        const text1 = document.getElementById(isMobile ? 'text1-mobile' : 'text1');
+        const text2 = document.getElementById(isMobile ? 'text2-mobile' : 'text2');
+
+        typeWriter(text1, 'Criamos.', () => {
+            typeWriter(text2, 'Ampliamos.');
+        });
+    }, 800);
+});
+</script>
+{% endblock %}

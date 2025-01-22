@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}Projetos - Sanyahu Designer{% endblock %}
+
+{% block content %}
+<section class="projects-section">
+    <div class="container">
+        <h1 class="section-title">Projetos</h1>
+        <p class="section-subtitle">Confira alguns dos meus trabalhos mais recentes</p>
+        
+        <div class="projects-grid">
+            {% for project in projects %}
+            <article class="project-card fade-in">
+                {% if project.image %}
+                <div class="project-image">
+                    <img src="{{ project.image.url }}" alt="{{ project.title }}">
+                    <div class="project-overlay">
+                        <div class="project-links">
+                            {% if project.url %}
+                            <a href="{{ project.url }}" class="project-link" target="_blank" rel="noopener">
+                                <i class="fas fa-external-link-alt"></i>
+                                Ver Projeto
+                            </a>
+                            {% endif %}
+                            {% if project.github_url %}
+                            <a href="{{ project.github_url }}" class="project-link" target="_blank" rel="noopener">
+                                <i class="fab fa-github"></i>
+                                Ver Código
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                <div class="project-content">
+                    <h2 class="project-title">{{ project.title }}</h2>
+                    <p class="project-description">{{ project.description }}</p>
+                    <div class="project-tech">
+                        {% for tech in project.technologies.all %}
+                        <span class="tech-tag">{{ tech.name }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+            </article>
+            {% empty %}
+            <p class="no-projects">Nenhum projeto encontrado.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

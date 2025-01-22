@@ -1,0 +1,159 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Sanyahu Designer{% endblock %}</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}">
+    <link rel="stylesheet" href="{% static 'css/output.css' %}">
+    {% block extra_css %}{% endblock %}
+    <meta name="description" content="Portfólio de Sanyahu Designer - Design e Desenvolvimento Web">
+    <script>
+        // Garante que o preloader existe
+        window.addEventListener('DOMContentLoaded', function() {
+            if (!document.getElementById('preloader')) {
+                const preloader = document.createElement('div');
+                preloader.id = 'preloader';
+                preloader.className = 'fixed inset-0 z-50 bg-white dark:bg-deep-navy flex items-center justify-center';
+                preloader.innerHTML = '<div class="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gold-primary"></div>';
+                document.body.insertBefore(preloader, document.body.firstChild);
+            }
+        });
+    </script>
+</head>
+<body class="font-sans antialiased bg-white dark:bg-deep-navy text-gray-900 dark:text-white">
+    <!-- Preloader -->
+    <div id="preloader" class="fixed inset-0 z-50 bg-white dark:bg-deep-navy flex items-center justify-center">
+        <div class="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gold-primary"></div>
+    </div>
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-40 bg-white/80 dark:bg-deep-navy/80 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 md:h-20">
+                <!-- Logo -->
+                <a href="{% url 'portfolio:home' %}" class="flex-shrink-0">
+                    <img src="{% static 'img/logo-light.png' %}" alt="Sanyahu Designer" class="h-8 md:h-10 w-auto">
+                </a>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="{% url 'portfolio:home' %}" class="text-gray-600 dark:text-gray-300 hover:text-gold-primary dark:hover:text-gold-primary transition-colors nav-link">Início</a>
+                    <a href="{% url 'portfolio:about' %}" class="text-gray-600 dark:text-gray-300 hover:text-gold-primary dark:hover:text-gold-primary transition-colors nav-link">Sobre</a>
+                    <a href="{% url 'portfolio:projects' %}" class="text-gray-600 dark:text-gray-300 hover:text-gold-primary dark:hover:text-gold-primary transition-colors nav-link">Projetos</a>
+                    <a href="{% url 'portfolio:services' %}" class="text-gray-600 dark:text-gray-300 hover:text-gold-primary dark:hover:text-gold-primary transition-colors nav-link">Serviços</a>
+                    <a href="{% url 'portfolio:blog' %}" class="text-gray-600 dark:text-gray-300 hover:text-gold-primary dark:hover:text-gold-primary transition-colors nav-link">Blog</a>
+                    <a href="{% url 'portfolio:contact' %}" class="text-gray-600 dark:text-gray-300 hover:text-gold-primary dark:hover:text-gold-primary transition-colors nav-link">Contato</a>
+                </div>
+
+                <!-- Dark Mode Toggle -->
+                <div class="flex items-center space-x-4">
+                    <button id="theme-toggle" class="p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
+                        <svg id="theme-toggle-dark-icon" class="hidden h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                        </svg>
+                        <svg id="theme-toggle-light-icon" class="hidden h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="md:hidden p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path class="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden">
+            <div class="px-2 pt-4 pb-6 space-y-3 bg-white dark:bg-deep-navy border-t border-gray-200 dark:border-gray-800">
+                <a href="{% url 'portfolio:home' %}" class="block px-3 py-2 text-base font-medium text-gray-600 dark:text-gray-300 hover:text-gold-primary dark:hover:text-gold-primary hover:bg-gray-50 dark:hover:bg-gray-800 rounded-md transition-colors mobile-nav-link">Início</a>
+                <a href="{% url 'portfolio:about' %}" class="block px-3 py-2 text-base font-medium text-gray-600 dark:text-gray-300 hover:text-gold-primary dark:hover:text-gold-primary hover:bg-gray-50 dark:hover:bg-gray-800 rounded-md transition-colors mobile-nav-link">Sobre</a>
+                <a href="{% url 'portfolio:projects' %}" class="block px-3 py-2 text-base font-medium text-gray-600 dark:text-gray-300 hover:text-gold-primary dark:hover:text-gold-primary hover:bg-gray-50 dark:hover:bg-gray-800 rounded-md transition-colors mobile-nav-link">Projetos</a>
+                <a href="{% url 'portfolio:services' %}" class="block px-3 py-2 text-base font-medium text-gray-600 dark:text-gray-300 hover:text-gold-primary dark:hover:text-gold-primary hover:bg-gray-50 dark:hover:bg-gray-800 rounded-md transition-colors mobile-nav-link">Serviços</a>
+                <a href="{% url 'portfolio:blog' %}" class="block px-3 py-2 text-base font-medium text-gray-600 dark:text-gray-300 hover:text-gold-primary dark:hover:text-gold-primary hover:bg-gray-50 dark:hover:bg-gray-800 rounded-md transition-colors mobile-nav-link">Blog</a>
+                <a href="{% url 'portfolio:contact' %}" class="block px-3 py-2 text-base font-medium text-gray-600 dark:text-gray-300 hover:text-gold-primary dark:hover:text-gold-primary hover:bg-gray-50 dark:hover:bg-gray-800 rounded-md transition-colors mobile-nav-link">Contato</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-16 md:pt-20">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-12">
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <!-- Logo e Tagline -->
+                <div class="mb-8 md:mb-0 text-center md:text-left">
+                    <a href="{% url 'portfolio:home' %}" class="inline-block mb-4">
+                        <img src="{% static 'img/logo-dark.png' %}" alt="Sanyahu Designer" class="h-12 w-auto">
+                    </a>
+                    <p class="text-lg max-w-md">
+                        Transformando ideias em experiências digitais memoráveis através do design e desenvolvimento web.
+                    </p>
+                </div>
+
+                <!-- Links Rápidos -->
+                <div class="mb-8 md:mb-0">
+                    <h3 class="text-lg font-semibold mb-4">Links Rápidos</h3>
+                    <ul class="space-y-2">
+                        <li><a href="{% url 'portfolio:home' %}" class="hover:text-gold-primary transition-colors">Início</a></li>
+                        <li><a href="{% url 'portfolio:about' %}" class="hover:text-gold-primary transition-colors">Sobre</a></li>
+                        <li><a href="{% url 'portfolio:projects' %}" class="hover:text-gold-primary transition-colors">Projetos</a></li>
+                        <li><a href="{% url 'portfolio:services' %}" class="hover:text-gold-primary transition-colors">Serviços</a></li>
+                        <li><a href="{% url 'portfolio:blog' %}" class="hover:text-gold-primary transition-colors">Blog</a></li>
+                        <li><a href="{% url 'portfolio:contact' %}" class="hover:text-gold-primary transition-colors">Contato</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contato -->
+                <div class="text-center md:text-left">
+                    <h3 class="text-lg font-semibold mb-4">Contato</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2"></i>
+                            <a href="mailto:arte@sanyahudesigner.com.br" class="hover:text-gold-primary transition-colors">arte@sanyahudesigner.com.br</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-2"></i>
+                            <a href="https://wa.me/5551996164731" target="_blank" class="hover:text-gold-primary transition-colors">(51) 99616-4731</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            <a href="https://maps.app.goo.gl/Ltc2m1n51JKH7BvMA" target="_blank" class="hover:text-gold-primary transition-colors">Caraá, RS - Brasil</a>
+                        </li>
+                    </ul>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="https://www.linkedin.com/in/sanyahu-designer/" target="_blank" class="text-gray-600 dark:text-gray-300 hover:text-gold-primary dark:hover:text-gold-primary transition-colors text-xl social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com/Sanyahu-Designer" target="_blank" class="text-gray-600 dark:text-gray-300 hover:text-gold-primary dark:hover:text-gold-primary transition-colors text-xl social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.instagram.com/sanyahu_designer" target="_blank" class="text-gray-600 dark:text-gray-300 hover:text-gold-primary dark:hover:text-gold-primary transition-colors text-xl social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 pt-8 border-t border-gray-800 text-center">
+                <p>&copy; {% now "Y" %} Sanyahu Designer. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="{% static 'js/main.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,31 @@
+<VirtualHost *:80>
+    ServerName sanyahudesigner.com.br
+    ServerAlias www.sanyahudesigner.com.br
+    ServerAdmin arte@sanyahudesigner.com.br
+
+    DocumentRoot /home/netsarim/sanyahudesigner.com.br
+
+    Alias /static/ /home/netsarim/sanyahudesigner.com.br/static/
+    Alias /media/ /home/netsarim/sanyahudesigner.com.br/media/
+
+    <Directory /home/netsarim/sanyahudesigner.com.br/static>
+        Require all granted
+    </Directory>
+
+    <Directory /home/netsarim/sanyahudesigner.com.br/media>
+        Require all granted
+    </Directory>
+
+    WSGIDaemonProcess sanyahudesigner python-path=/home/netsarim/sanyahudesigner
+    WSGIProcessGroup sanyahudesigner
+    WSGIScriptAlias / /home/netsarim/sanyahudesigner/portfolio_config/wsgi.py
+
+    <Directory /home/netsarim/sanyahudesigner/portfolio_config>
+        <Files wsgi.py>
+            Require all granted
+        </Files>
+    </Directory>
+
+    ErrorLog ${APACHE_LOG_DIR}/sanyahudesigner_error.log
+    CustomLog ${APACHE_LOG_DIR}/sanyahudesigner_access.log combined
+</VirtualHost>

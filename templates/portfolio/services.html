@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load portfolio_extras %}
+
+{% block title %}Serviços - {{ block.super }}{% endblock %}
+
+{% block content %}
+    <!-- Services Header -->
+    <div class="bg-gradient-to-br from-gray-900 to-blue-900 py-20">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-4xl lg:text-5xl font-bold text-white mb-4">Nossos Serviços</h1>
+                <p class="text-xl text-gray-300">Soluções personalizadas para transformar sua presença digital</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <section class="py-16 bg-white dark:bg-deep-navy">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {% for service in services %}
+                <div class="bg-white dark:bg-gray-800 rounded-lg p-8 shadow-lg">
+                    <div class="mb-6">
+                        <i class="{{ service.icon }} text-4xl text-primary"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-6">{{ service.title }}</h3>
+                    <ul class="space-y-3 text-gray-600 dark:text-gray-400">
+                        {% for item in service.description|safe|split_lines %}
+                            {% if item|strip %}
+                                <li>{{ item|safe }}</li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="py-16 bg-white dark:bg-deep-navy">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold mb-4">Como Trabalhamos</h2>
+                <p class="text-gray-600 dark:text-gray-400">Nossa metodologia para entregar resultados excepcionais</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {% for process in processes %}
+                <div class="text-center transform hover:scale-105 transition duration-300">
+                    <div class="w-20 h-20 mx-auto mb-6 rounded-2xl bg-primary/10 flex items-center justify-center">
+                        <i class="{{ process.icon }} text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">{{ process.title }}</h3>
+                    <div class="text-gray-600 dark:text-gray-400">
+                        {{ process.description|safe }}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <div class="bg-gradient-to-br from-gray-900 to-blue-900">
+        <div class="container mx-auto px-4 py-20">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-6 text-white">Vamos trabalhar juntos?</h2>
+                <p class="text-xl text-gray-300 mb-8">Vamos conversar sobre como posso ajudar no seu próximo projeto</p>
+                <a href="{% url 'portfolio:contact' %}" 
+                   class="inline-flex items-center px-8 py-4 bg-blue-600 hover:bg-blue-700 rounded-lg">
+                    <span class="text-white font-semibold">Entre em Contato</span>
+                    <svg class="w-5 h-5 ml-2 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

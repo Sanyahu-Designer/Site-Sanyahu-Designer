@@ -1,0 +1,115 @@
+[
+    {
+        "model": "sites.site",
+        "pk": 1,
+        "fields": {
+            "domain": "example.com",
+            "name": "Sanyahu Designer"
+        }
+    },
+    {
+        "model": "portfolio.about",
+        "pk": 1,
+        "fields": {
+            "title": "Olá, sou Sanya Hu",
+            "description": "<p>Designer e Desenvolvedora Full Stack com mais de 8 anos de experiência em criar soluções digitais inovadoras. Especializada em UI/UX Design e desenvolvimento web com foco em Python/Django e JavaScript.</p><p>Minha paixão está em transformar ideias complexas em interfaces intuitivas e funcionais, sempre buscando o equilíbrio perfeito entre estética e usabilidade.</p>",
+            "profile_image": "about/profile.jpg",
+            "created_at": "2024-01-20T12:00:00Z",
+            "updated_at": "2024-01-20T12:00:00Z"
+        }
+    },
+    {
+        "model": "portfolio.skill",
+        "pk": 1,
+        "fields": {
+            "title": "UI/UX Design",
+            "description": "Design de interfaces intuitivas e experiências de usuário memoráveis",
+            "icon": "fas fa-pencil-ruler",
+            "skill_type": "design",
+            "order": 1,
+            "created_at": "2024-01-20T12:00:00Z",
+            "updated_at": "2024-01-20T12:00:00Z"
+        }
+    },
+    {
+        "model": "portfolio.skill",
+        "pk": 2,
+        "fields": {
+            "title": "Front-end Development",
+            "description": "Desenvolvimento de interfaces responsivas e modernas",
+            "icon": "fas fa-code",
+            "skill_type": "development",
+            "order": 2,
+            "created_at": "2024-01-20T12:00:00Z",
+            "updated_at": "2024-01-20T12:00:00Z"
+        }
+    },
+    {
+        "model": "portfolio.skill",
+        "pk": 3,
+        "fields": {
+            "title": "Python/Django",
+            "description": "Desenvolvimento backend robusto e escalável",
+            "icon": "fab fa-python",
+            "skill_type": "development",
+            "order": 3,
+            "created_at": "2024-01-20T12:00:00Z",
+            "updated_at": "2024-01-20T12:00:00Z"
+        }
+    },
+    {
+        "model": "portfolio.skill",
+        "pk": 4,
+        "fields": {
+            "title": "Adobe Creative Suite",
+            "description": "Criação de assets visuais e edição de imagens",
+            "icon": "fas fa-palette",
+            "skill_type": "tools",
+            "order": 4,
+            "created_at": "2024-01-20T12:00:00Z",
+            "updated_at": "2024-01-20T12:00:00Z"
+        }
+    },
+    {
+        "model": "portfolio.experience",
+        "pk": 1,
+        "fields": {
+            "title": "Adobe Photoshop",
+            "description": "Edição profissional de imagens, criação de layouts e manipulação de fotografias",
+            "version": "2024 CC",
+            "proficiency_level": "Avançado",
+            "experience_type": "tools",
+            "order": 1,
+            "created_at": "2024-01-20T12:00:00Z",
+            "updated_at": "2024-01-20T12:00:00Z"
+        }
+    },
+    {
+        "model": "portfolio.experience",
+        "pk": 2,
+        "fields": {
+            "title": "CorelDRAW",
+            "description": "Criação de ilustrações vetoriais, logos e materiais impressos",
+            "version": "2024",
+            "proficiency_level": "Avançado",
+            "experience_type": "tools",
+            "order": 2,
+            "created_at": "2024-01-20T12:00:00Z",
+            "updated_at": "2024-01-20T12:00:00Z"
+        }
+    },
+    {
+        "model": "portfolio.experience",
+        "pk": 3,
+        "fields": {
+            "title": "Adobe Illustrator",
+            "description": "Design de logos, ícones e ilustrações vetoriais",
+            "version": "2024 CC",
+            "proficiency_level": "Intermediário",
+            "experience_type": "tools",
+            "order": 3,
+            "created_at": "2024-01-20T12:00:00Z",
+            "updated_at": "2024-01-20T12:00:00Z"
+        }
+    }
+]

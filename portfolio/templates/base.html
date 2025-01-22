@@ -1,0 +1,189 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanya Hu - Portfolio</title>
+    
+    <!-- Meta tags -->
+    <meta name="description" content="Portfolio profissional de Sanya Hu - Designer e Desenvolvedor Web">
+    <meta name="keywords" content="portfolio, design, desenvolvimento web, ui/ux, marketing digital">
+    <meta name="author" content="Sanya Hu">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/output.css' %}">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            overflow-x: hidden;
+            width: 100vw;
+            position: relative;
+        }
+        
+        body {
+            min-height: 100vh;
+            width: 100%;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        .mobile-text-container {
+            width: 100%;
+            max-width: 100%;
+            overflow: hidden;
+            padding: 0 1rem;
+        }
+        
+        .mobile-text {
+            font-size: 1rem;
+            line-height: 1.2;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+            word-break: break-word;
+        }
+        
+        nav {
+            width: 100vw;
+            max-width: 100%;
+            overflow: hidden;
+        }
+        
+        .nav-container {
+            width: 100%;
+            max-width: 100%;
+            padding: 0 1rem;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        @media (min-width: 640px) {
+            .mobile-text {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Sanya Hu - Portfolio">
+    <meta property="og:description" content="Designer e Desenvolvedor Web especializado em criar experiências digitais memoráveis">
+    <meta property="og:image" content="{% static 'img/og-image.jpg' %}">
+    <meta property="og:url" content="https://sanyahu.com">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Sanya Hu - Portfolio">
+    <meta name="twitter:description" content="Designer e Desenvolvedor Web especializado em criar experiências digitais memoráveis">
+    <meta name="twitter:image" content="{% static 'img/og-image.jpg' %}">
+</head>
+<body class="bg-pearl-white dark:bg-deep-navy text-gray-800 dark:text-gray-200 font-sans antialiased overflow-x-hidden">
+    <!-- Navigation -->
+    <nav class="fixed top-0 z-50 bg-white/80 dark:bg-deep-navy/80 backdrop-blur-lg border-b border-gray-200 dark:border-slate-blue">
+        <div class="nav-container h-16">
+            <a href="/" class="flex items-center">
+                <img src="{% static 'img/logo.png' %}" alt="Sanya Hu Logo" class="h-8 w-auto">
+            </a>
+            
+            <button class="lg:hidden p-2" aria-label="Toggle Menu">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+            
+            <div class="hidden lg:flex lg:items-center lg:space-x-8">
+                <a href="#services" class="nav-link">Serviços</a>
+                <a href="#projects" class="nav-link">Projetos</a>
+                <a href="#testimonials" class="nav-link">Depoimentos</a>
+                <a href="#contact" class="btn-primary">Contato</a>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="lg:hidden hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#services" class="nav-link block px-3 py-2">Serviços</a>
+                <a href="#projects" class="nav-link block px-3 py-2">Projetos</a>
+                <a href="#testimonials" class="nav-link block px-3 py-2">Depoimentos</a>
+                <a href="#contact" class="btn-primary block text-center mx-3">Contato</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <main class="pt-16">
+        {% block content %}{% endblock %}
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-deep-navy border-t border-gray-200 dark:border-slate-blue">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="space-y-4">
+                    <img src="{% static 'img/logo.png' %}" alt="Sanya Hu Logo" class="h-8 w-auto">
+                    <p class="text-gray-600 dark:text-gray-400">Criando experiências digitais memoráveis que conectam marcas ao seu público.</p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-lg mb-4">Navegação</h4>
+                    <div class="space-y-2">
+                        <a href="#services" class="nav-link block">Serviços</a>
+                        <a href="#projects" class="nav-link block">Projetos</a>
+                        <a href="#testimonials" class="nav-link block">Depoimentos</a>
+                        <a href="#contact" class="nav-link block">Contato</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-lg mb-4">Social</h4>
+                    <div class="space-y-2">
+                        <a href="https://linkedin.com" target="_blank" rel="noopener" class="nav-link block">LinkedIn</a>
+                        <a href="https://github.com" target="_blank" rel="noopener" class="nav-link block">GitHub</a>
+                        <a href="https://behance.net" target="_blank" rel="noopener" class="nav-link block">Behance</a>
+                        <a href="https://dribbble.com" target="_blank" rel="noopener" class="nav-link block">Dribbble</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-lg mb-4">Contato</h4>
+                    <div class="space-y-2">
+                        <a href="mailto:contato@sanyahu.com" class="nav-link block">contato@sanyahu.com</a>
+                        <a href="tel:+5511999999999" class="nav-link block">+55 (11) 99999-9999</a>
+                        <p class="text-gray-600 dark:text-gray-400">São Paulo, SP</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 pt-8 border-t border-gray-200 dark:border-slate-blue flex justify-between items-center">
+                <p class="text-gray-600 dark:text-gray-400">&copy; {% now "Y" %} Sanya Hu. Todos os direitos reservados.</p>
+                <button class="p-2 rounded-full bg-gray-100 dark:bg-slate-blue text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-deep-navy transition-colors" aria-label="Toggle Theme">
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
